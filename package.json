@@ -4,7 +4,11 @@
   "description": "a simple project with React js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "go": "start http://localhost:3000",
+    "e2e": "nightwatch",
+    "test-runner": "./node_modules/.bin/concurrently -k 'npm run server' 'npm run e2e'",
+    "start": "npm run server",
+    "server": "npm run go && node serve.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,9 @@
   },
   "homepage": "https://github.com/Miladxsar23/Voting-App-React#readme",
   "devDependencies": {
-    "live-server": "^1.2.1"
-  }
+    "concurrently": "^6.5.1",
+    "nightwatch": "^1.7.13",
+    "serve": "^13.0.2"
+  },
+  "dependencies": {}
 }
