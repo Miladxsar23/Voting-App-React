@@ -35,13 +35,13 @@ class ProductList extends React.Component {
         products: []
     }
     // bind custom method to 'this' object
-    addVoted = this.addVoted.bind(this)
+    
     componentDidMount() {
         this.setState({
             products : Seed.products
         })
     }
-    addVoted(productId) {
+    addVoted = (productId) => {
         let newProducts = this.state.products.map(prod => {
             if (prod.id === productId) {
                 return Object.assign({}, prod, {
