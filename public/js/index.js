@@ -42,11 +42,14 @@ class ProductList extends React.Component {
     addVoted(productId) {
         let newProducts = this.state.products.map(prod => {
             if (prod.id === productId) {
-                prod.votes++;
-                return prod;
+                return Object.assign({}, prod, {
+                    votes : prod.votes + 1
+                })
             }
             return prod;
         })
+        console.log(this.state)
+        console.log(newProducts)
         this.setState({
             products: newProducts
         })
