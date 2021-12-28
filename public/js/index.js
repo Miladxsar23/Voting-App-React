@@ -34,6 +34,8 @@ class ProductList extends React.Component {
     state = {
         products: []
     }
+    // bind custom method to 'this' object
+    addVoted = this.addVoted.bind(this)
     componentDidMount() {
         this.setState({
             products : Seed.products
@@ -48,8 +50,6 @@ class ProductList extends React.Component {
             }
             return prod;
         })
-        console.log(this.state)
-        console.log(newProducts)
         this.setState({
             products: newProducts
         })
@@ -58,7 +58,7 @@ class ProductList extends React.Component {
         let seed = this.state.products.sort((a, b) => { return b.votes - a.votes });
         const row = seed.map((prod, index) => {
             return (
-                <Product key={`product-` + prod.id} product={prod} onVote={this.addVoted.bind(this)} />
+                <Product key={`product-` + prod.id} product={prod} onVote={this.addVoted} />
             )
         })
         return (
