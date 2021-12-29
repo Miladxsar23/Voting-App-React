@@ -6,7 +6,7 @@
   "scripts": {
     "go": "start http://localhost:3000",
     "e2e": "nightwatch",
-    "test-runner": "./node_modules/.bin/concurrently -k 'npm run server' 'npm run e2e'",
+    "test-runner": "concurrently -k \"npm run server\" \"npm run e2e\"",
     "start": "npm run server",
     "server": "npm run go && node serve.js"
   },
@@ -28,6 +28,7 @@
   "devDependencies": {
     "concurrently": "^6.5.1",
     "nightwatch": "^1.7.13",
+    "selenium-server": "^3.141.59",
     "serve": "^13.0.2"
   },
   "dependencies": {}
