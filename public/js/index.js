@@ -30,6 +30,21 @@ class Product extends React.Component {
         )
     }
 }
+class ProductSorter extends React.Component {
+    render() {
+        const {onVote} = this.props;
+        const sortedProduct = this.props.products.sort((a, b) => {return b.votes - a.votes});
+        const row = sortedProduct.map((prod) => {
+            return <Product key={"product-" + prod.id} product={prod} onVote={onVote}/>
+        })
+        return (
+            <div className="ui unstackable items">
+                {row}
+            </div>
+        ) 
+    }
+}
+
 class ProductList extends React.Component {
     state = {
         products: []
@@ -54,15 +69,9 @@ class ProductList extends React.Component {
         })
     }
     render() {
-        let seed = this.state.products.sort((a, b) => { return b.votes - a.votes });
-        const row = seed.map((prod, index) => {
-            return (
-                <Product key={`product-` + prod.id} product={prod} onVote={this.addVoted} />
-            )
-        })
         return (
-            <div className="ui unstackable items">
-                {row}
+            <div className="items">
+                <ProductSorter products={this.state.products} onVote={this.addVoted} />
             </div>
         )
     }
